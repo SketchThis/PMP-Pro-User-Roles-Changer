@@ -1,16 +1,17 @@
 <?php
 /*
 Plugin Name: PMP Role Plugin
-Plugin URI: http://www.jacobisawesome.com/pmp-is-the-shiz/
-Description: Manages switching the Wordpress role for paid and unpaid users when subscription status changes
+Plugin URI: https://github.com/SketchThis/PMP-Pro-User-Roles-Changer
+Description: Manages switching the Wordpress role for paid and unpaid users when subscription status changes.
+Credit for this plugin should be given to Jason Coleman at PMP which is where 99.9% of this code came from: http://www.paidmembershipspro.com/2011/10/give-new-members-author-role/
 Version: .1
 Author: Jacob Lauzier
-Author URI: http://www.jacobisawesome.com
+Author URI: https://www.facebook.com/jacoblauzier
 */
 /*
 	This code will make members signing up for membership level #1 authors and make them subscribers when they cancel.
 */
-function my_pmpro_after_change_membership_level($level_id, $user_id)
+function jl_pmpro_set_role__after_change_membership_level($level_id, $user_id)
 {
 	if($level_id > 0)
 	{
@@ -27,5 +28,5 @@ function my_pmpro_after_change_membership_level($level_id, $user_id)
 			$wp_user_object->set_role('free');
 	}
 }
-add_action("pmpro_after_change_membership_level", "my_pmpro_after_change_membership_level", 10, 2);
+add_action("pmpro_after_change_membership_level", "jl_pmpro_set_role_after_change_membership_level", 10, 2);
 ?>
